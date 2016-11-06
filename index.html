@@ -1,23 +1,55 @@
-<html>
+<!DOCTYPE html>
 	<head>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+		<script>
+
+			function maleName() {
+	    		var maleArr = ["Isaac","Jonathan","Cole","Kyle","Zachary","Xavier","Jose","Kevin","Blake","Blain","Ryan","Brian","Joseph","David","Ash","Aspen","Jake","Lawson","Landen","Branden","Cliff","Jesus","Flint","Clint","Hucklebeery","Victor","Harry","Ron","Peter","Paul","Matthew","John","Ezra","Elijah","Basil","Scott","Kamden","Liam","Joel","Jacob","Ethan","Michael","Benjamin","Ben","Asher","Oliver","Jasper","Emmett","Noah","Fisher","James","Jack","Daniel","Lucas","Luke","Luis","Pablo","Aaron","Alfred","Albert","Alan","Nathan","Simon","Christian","Joel","Nicolas","Thomas","Robert","Julian","Turner","Brett","Jason","Alder","Stephan","Steven","Damen","Ed","Carson","Brad","Holden","Zane","Finn","Aiden","Oscar","Patrick","Arthur","Graham","Grant","Jackson","Gabriel","Slater","Duncan","Tom","Vince","Vinny","Vincent","Barnaby","Bernard","Guthrie","Jeffrey","Geoffrey","Mack","Malachi","Abraham","Austin","Donnovan","Donald","Marco","Barrack","Brennan","Bernie","Brick","Calix","Felix","Callaway","Calvin","Alvin","Casper","Chet","Cosmo","Day","Fergus","Garrett","Gary","Godfrey","Giovanni","Griffin","Griffith","Andrew","Anthony","Kit","Percy","Lou","Louis","George","Russel","Park","Rufus","Socrates","Tobias","Tiberius","Waldo","Webster","Wilfred","Sven","Phillip","Owen","Jim","Caspian","Charles","Bellamy","Sebastian","Derek","Eric","Rick","Richard","Robert","Bob","Connor","Fernando","Mickey","Dave","Doug","Rafael","Leo","Leonard","Fred","Carl","Jeremy","Jeremiah","Manuel","Moe","Mark","Greg","Clark","Edward","Edwin","Mike","Bert","Ernie","Roman","Alec","Alexander","Alejandro","Xander","Brendon","Adam","Landon","Carter","Omar","Stanley","Cesar","Evan","Zack","Kai","Jerry","Josiah","Hunter","Ken","Nick","Nester","Clayton","Clay","Kristoff","Kristofferson","Conroy","Conrad","Roy","Arnold","Shawn","Wilson","Anderson","Cooper","Martin","Mitchell","Mitch","Howard","Bennett","Ross","Cole","Henry","Lawrence","Elliot","Dawson","Pacey","Joey","Timothy","Tim","Dean","Curtis","Neal","Chester","Dennis","Sheldon","Gregory","Santiago","Abe","Gabe","Demetrius","Kirby","Kirk","Ernest"];
+	    		document.getElementById("male").innerHTML = maleArr[Math.floor(Math.random() * maleArr.length)];
+				}
+				function femaleName() {
+	    			var femaleArr = ["Amanda","Kimberly","Elizabeth","Samantha","Brittany","Jennifer","Lydia","Olivia","Megan","Ava","Alexis","Sandra","Cassandra","Summer","April","May","Mary","Arbor","Ashleu","Ashlyn","Martha","Briar","Clover","Dahlia","Daria","Dove","Iris","Rochelle","Nancy","Ivy","Ivory","Laurel","Lauren","Michelle","Brooke","Danielle","Daniella","Isabel","Isabella","Claire","Victoria","Eve","Eva","Abbie","Abigail","Emily","Amelia","Julia","Julie","Veronica","Kira","Sophia","Sophie","Mia","Emma","Erin","Francesca","Melissa","Lisa","Liz","Cindy","Bonnie","Rose","Rosalind","Grace","Helen","Ilene","Kathy","Catherine","Noelle","Kaylee","Kayla","Kyla","Caroline","Marguerite","Molly","Beatrice","Susan","Susanna","Savannah","Susie","Dina","Ann","Ana","Dorthy","Marie","Kiri","Jasmine","Juliet","Meredith","Kylie","Nevaeh","Hannah","Carmen","Claudia","Stphanie","Christina","Anastasia","Angelica","Joan","Katie","Katelyn","Donna","Gabriella","Sloan","Selena","Allie","Ellie","Allison","Evelyn","Stacy","Adrianna","Adrienne","Rebecca","Becca","Rosie","Hillary","Holly","Wanda","Winnie","Raquel","Winifred","Gwendolyn","Gwen","Penelope","Lois","Nora","Natalie","Natalia","Karen","Jackie","Jaquelyn","Alberta","Paige","Alba","Jessica","Aria","Jen","Diane","Diana","Annabel","Sara","Soriah","Clementine","Elena","Albany","Avalon","Svetlana","Ursula","Lillian","Lindsay","Nicole","Bita","Marrissa","Naomi","Tabitha","Bethany","Beth","Betty","Rachel","Melody","Odette","Chloe","Daisy","Harriett","Patricia","Patty","Priya","Sierra","Ruby","Kristy","Kristen","Christine","Matilda","Magdalene","Daphne","Carrie","Carolyn","Angelina","Chelsea","Raven","Leia","Ashley","Leah","Layla","Lana","Alana","Maggie","Jill","Jillian","Rosemay","Rosemary","Sadie","Kelsey","Cassie","Angela","Cheryl","Fiona","Ella","Phoebe","Alexandria","Alexandra","Mariah","Abby","Mona","Myrtle","June","Janet","Jane","Linda","Zoey","Brenda","Debbie","Deborah","Debra","Ruthane","Vicky","Louise","Lousia","Winona","Crystal","Kaliene","Andrea","Courtney","Janey","Dianet","Annette","Shannon","Heidi","Tracy","Vanessa","Tess","Candice","Marianne","Eliza","Lucienne","Lucy","Jenna","Kemley","Yanelis","Janielle","Giselle","Brianna","Kelly","Janessa","Joselyn","Barbara","Barbie","Olga","Helga","Shaundra","Shawna","Henrietta","Brandy","Josephina","Josephine","Cheyenne","Theresa","Denise","Rhonda","Rihanna","Beyonce","Paige","Ingram","Blair","Aubrey","Cora","Cleo","Valerie"];
+	    		document.getElementById("female").innerHTML = femaleArr[Math.floor(Math.random() * femaleArr.length)];
+				}
+				function uniName() {
+					var uniArr = ["Forest","Taylor","Dillon","Alex","River","Bay","Angel","Field","Sam","Glen","Linden","Skylar","Mason","Chen","Francis","Willow","Tyler","Rain","Bailey","Avery","Cameron","Casey","Charlie","Corin","Dakota","Drew","Devon","Ellery","Emery","Evan","Finley","Flynn","Gray","Harley","Harper","Hayden","Jaden","Jazz","Jalen","Jess","Jordan","Jules","Justice","Keegan","Kendall","Kennedy","Lane","London","Mikah","Morgan","Nico","Parker","Paxton","Payton","Phoenix","Presley","Quinn","Reagan","Reese","Riley","Rio","Rory","Rowan","Sage","Samar","Sasha","Sawyer","Scout","Sky","Storm","Teagan","Timber","Toby","Trew","Valentine","Adrian","Bradley","Jonah","Arhcer","Rudy","Tony","Ariel","Cairo","Jamie","Tristan","Carol","Killian","Noy","Blake","Logan","Madison","Randy","Hill","Spencer","Carol","Andy","Terry","Chandler","Addison","Ashton","Corey","Jayden","Jessie","Lee","Pat","Perry","Sydney","Zion","Ade","Ainsley","Bobbie","Daryl","Eli","Frankie","Peyton","River","Stevie","Tanner","West","Winter","Aspen","August","Bentley","Billy","Cadence","Camden","Carson","Clyde","Connie","Cruz","Dale","Dallas","Dana","Dean","Donnie","Eden","Elisha","Gale","Gene","Gerry","Hadley","Haven","Jan","Jaylin","Joan","Jody","Kellen","Kelley","Kerry","Kim","Lacey","Lashawn","Leslie","Marley","Ollie","Paris","Patsy","Raven","Rene","Robin","Sandy","Shea","Shelby","Whitney","Arlo","Austin","Bodhi","Sookie","Cohen","Darcy","Darby","Declan","Dian","Domino","Hero","Harlow","Indiana","Indigo","Jaya","Jazz","Jesey","Joss","Jude","Kai","Lux","Marlow","Maxwell","Misha","Montana","Murphy","Neo","Ocean","Orion","Penn","Raine","Remy","Reyes","Rio","Roshan","Rylan","Sacha","Shiloh","Milo","Sparrow","Storm","Val","Vesper","Wren","Wyatt","Ziv"];
+	    		document.getElementById("uni").innerHTML = uniArr[Math.floor(Math.random() * uniArr.length)];
+				}
+				function lastName() {
+					var lastArr = ["Smith","Johnson","Williams","Jones","Brown","Davis","Miller","Wilson","Moore","Taylor","Anderson","Cooper","Price","Edens","Ying","Eden","Eppel","Gelman","Thomas","Jackson","White","Watkinson","Harris","Hill","Martin","Thompson","Garcia","Martinez","Robinson","Clark","Rodriguez","Lewis","Lee","Walker","Hall","Allen","Young","Lux","Hernandez","King","Wright","Lopez","Scott","Green","Adams","Baker","Gonzalez","Nelson","Carter","Mitchell","Perez","Roberts","Turner","Phillips","Campbell","Parker","Evans","Edwards","Collins","Stewart","Sanchez","Morris","Rogers","Reed","Cook","Morgan","Bell","Murphy","Bailey","Rivera","Cooper","Richardson","Cox","Howard","Ward","Torres","Peterson","Gray","Ramirez","James","Watson","Brooks","Kelly","Sanders","Price","Bennett","Wood","Barnes","Ross","Henderson","Coleman","Jenkins","Perry","Powell","Long","Patterson","Hughes","Flores","Washington","Butler","Simmons","Foster","Gonzales","Bryant","Alexander","Russell","Griffin","Diaz","Hayes","Myers","Ford","Hamilton","Graham","Sullivan","Wallace","Woods","Cole","West","Jordan","Owens","Reynolds","Fisher","Ellis","Harrison","McDonald","Cruz","Marshall","Ortiz","Gomez","Murray","Freeman","Wells","Webb","Simpson","Stevens","Tucker","Porter","Hunter","Hicks","Crawford","Henry","Boyd","Mason","Morales","Kennedy","Warren","Dixon","Ramos","Reyes","Burns","Gordon","Shaw","Holmes","Rice","Robertson","Hunt","Black","Daniels","Palmer","Mills","Nichols","Grant","Knight","Ferguson","Rose","Stone","Hawkins","Dunn","Perkins","Hudson","Spencer","Gardner","Stephens","Payne","Pierce","Berry","Matthews","Arnold","Wagner","Willis","Ray","Watkins","Olson","Carroll","Duncan","Snyder","Hart","Cunningham","Bradley","Lane","Andrews","Ruiz","Harper","Fox","Riley","Armstrong","Carpenter","Weaver","Greene","Lawrence","Elliot","Chavez","Sims","Austin","Peters","Kelley","Franklin","Lawson","Fields","Gutierrez","Ryan","Schmidt","Carr","Vasquez","Castillo","Wheeler","Chapman","Oliver","Montgomery","Richards","Williamson","Johnston","Banks","Meyer","Bishop","McCoy","Howell","Alvarez","Morrison","Hansen","Fernandez","Garza","Harvey","Little","Burton","Stanley","Nguyen","George","Jacobs","Reid","Kim","Fuller","Lynch","Dean","Gilbert","Garrett","Romero","Welch","Larson","Frazier","Burke","Hanson","Day","Mendoza","Moreno","Bowman","Medina","Fowler","Brewer","Hoffman","Carlson","Silva","Pearson","Holland","Douglas","Fleming","Jensen","Vargas","Byrd","Davidson","Hopkins","May","Terry","Herrera","Wade","Soto","Walters","Curtis","Neal","Caldwell","Lowe","Jennings","Barnett","Graves","Jimenez","Horton","Shelton","Barrett","O'Brien","Castro","Sutton","Gregory","McKinney","Lucas","Miles","Craig","Chambers","Holt","Lambert","Fletcher","Watts","Bates","Hale","Rhodes","Pena","Beck","Newman","Haynes","McDaniel","Mendez","Bush","Vaughn","Parks","Dawson","Santiago","Norris","Hardy","Love","Steele","Curry","Powers","Schultz","Barker","Guzman","Page","Munoz","Ball","Keller","Chandler","Weber","Leonard","Walsh","Lyons","Ramsey","Wolfe","Schneider","Mullins","Benson","Sharp","Bowen","Daniel","Barber","Cummings","Hines","Baldwin","Griffith","Valdez","Hubbard","Salazar","Reeves","Warner","Stevenson","Burgess","Santos","Tate","Cross","Garner","Mann","Mack","Moss","Thornton","Dennis","McGee","Farmer","Delgado","Aguilar","Vega","Glover","Manning","Cohen","Harmon","Rodgers","Robbins","Newton","Todd","Blair","Higgins","Ingram","Reese","Cannon","Ying","Lu"];
+	    		document.getElementById("last").innerHTML = lastArr[Math.floor(Math.random() * lastArr.length)];
+				}
+				function prompts() {
+					var promptsArr = ['A girl walks into a room where everybody knows her, but she knows no one.','"What’s for lunch?"','"Eh, I\'m really sweaty."','The entire room was silent, waiting for the phone to ring.','He woke up and heard the waves crashing.','She couldn’t sleep; the floor was cold.','He could see a tear forming in her eye.','The sunset cast shadows on the lifeless body.','She answered the last question and got up from her seat.','He walked outside and did not recognize his neighborhood.','He tried to work up the courage to talk to the woman across the road; it was his mother.','I looked down and saw a puddle of blood on my feet for the third time this week.','"If we get arrested, it\'s your fault."','She struggled to lift herself from the ground.','She was terrified her dreams would come true.','Most people are scared of the dark; she was scared of the light.','His body was turning into a mosaic of scars.','The disease was killing everyone he knew, one by one.','She walked on the campus with a pit in her stomach.','She rehearsed this night for years; the night when she would kill him.','It seemed like a good idea yesterday.','He opened the door to an empty room to find only a doll staring back at him.','They packed the last box and said their goodbyes.','The sun went down but never came up.','She waited at the bus stop for hours, holding a sign with her father\'s name.','She was stricken to find that she had been erased from every photo in the house.','The last test came back negative, but that was no relief.','She rested her head on her sister\'s shoulder.','A girl heard a cluck in an otherwise empty room.','They walked out of the store, thinking they got away with it.','She told him never to underestimate her.','"What the hell?! You promised!"','He ran to his friend\'s house to find the front door missing.','She woke up in a puddle of sweat.','His car stopped on the highway in the middle of nowhere.','She went to the coffee shop, but not for the coffee.','Another grave was dug up, the third one this week.','They all got on together, but only one got off.','She was terrified. She had never left her hometown, and now she was flying out of the country.','She opened a book written in a language she had never seen before, but found that she could understand everything.','She finished the last stroke on the painting, knowing that it would be her last.','He slipped down the hill and noticed a cottage off in the distance.','She just wanted to go home, but it wasn\'t there anymore.','At the end of the line there was nothing.','She crawled outside and felt the grass for the first time.','He grazed her face with his hand, examining every wrinkle.','He died and went to heaven to find that it was full.','She realized it was a game; the whole thing was a game.','Write a story from the perspective of a teacher.','The sun was an amazing shade of blue.','He woke up to find that he could only hear out of his left ear.','They finally reached civilization; it had been 23 days.','The side effects were taking over.','She had to make a choice: serve her sentence or flee.','He noticed a key was added to his keychain.','She felt a strange lump near her shoulder blade.','He spotted a bruise on her arm and realized it wasn\'t the only one.','She looked in the drawer and suddenly knew she wasn\'t alone.','He said his favorite lollipop was the cherry one.','An uncoordinated group of dancers somehow drew a crowd.','She opened the shoebox and saw the life she was never a part of.','They thought they could prevent the ocean from flooding the land, but they overdid it.','We thought it would be another entertaining day on our cruise, but not in this way.','"I love you." "Get the hell away from me."','They told me to make friends, like I had control of that.','When that song came on everyone rushed to the dance floor.','She heard a familiar voice calling her name; a voice she hadn\'t heard in 12 years.','They said everyone was welcome, but they lied.','The injury cut through to the bone, but he couldn’t feel any pain.','She looked in the mirror, but didn’t recognize a single feature.','"For sale: baby shoes, never worn." -Ernest Hemingway','He woke up but left his body behind.','He watched her carry a stack of books out of the library.','She had friends in high places.','Her mother conveniently forgot to attend the wedding.','After seven years, she called a truce; she couldn’t remember what she was fighting for.','He almost didn’t see the car flipped over in the ditch.','She reached the final step but still wasn\'t sure of her decision.','She drew "help" in the sand but brushed it away before anyone could see.','He was told to climb the ladder, but rung after rung, he never seemed to reach the top.','He said a prayer that night; something he hadn\'t done since he was a child.','She felt the needle in her back and hoped she would die soon.','His hand shook violently; he felt he had no control.','I never thought they\'d see me as a killer.','He put the shoes on; they were the first pair he\'d ever had.'];
+	    		document.getElementById("prompts").innerHTML = promptsArr[Math.floor(Math.random() * promptsArr.length)];
+			}
+		</script>
 		<style>
+		*{
+			background-color: #96C0CE;
+		}
 		header {
 			/*background-color: purple;*/
 			text-align: center;
-			background: url("http://67.media.tumblr.com/6c7c8e8f0d4c1d269b3f6b7dde075076/tumblr_o8zbqmYN751qhy6c9o1_1280.gif");
+			/*background: url("http://67.media.tumblr.com/6c7c8e8f0d4c1d269b3f6b7dde075076/tumblr_o8zbqmYN751qhy6c9o1_1280.gif");*/
 			/*background-image: "beachWed.jpg"*/
+/*			background: url("beachWed.jpg");*/
 			background-size: contain;
-			color: gray ;
+			color: #525564;
+
 		}
 		h1 {
 			font-size: 70px;
+			font-family: Verdana, sans-serif;
+			padding-bottom: 0px;
 		}
 		img {
-			margin: 40px 0 0 0;
-			border: 7px solid pink;
+			margin: 0 0 0 0;
+			/*border: 7px solid red;*/
 			border-radius: 20px;
 			background-color: brown;
+			width: 400px;
+			height: auto;
 		}
 		a {
 			color: white;
@@ -34,89 +66,48 @@
 			/* */
 			padding: 0px 10px 0px 10px;
 		}
-		/*top right bottom left*/
-		/* when only two its top/bottom left/right*/
-		.title{
-			margin: 0;
-		}
-		article {
-			max-width: 500px;
-			padding: 20px;
-			margin: 0 auto;
-		}
-		@media (max-width: 500px) {
-			.title {
-				font-size: 36px;
-			}
-			li {
-				display: block;
-				padding: 7px 0 7px 0;
-			}
-			a {
-				padding: 5px 40% 5px 40%;
-			}
+		button{
+			
+			/* background-color: #BEB9B5; /*gray*/
+			background-color: #FEF6EB;
+			font-family: Georgia;
+			border-radius: 8px;
+
 		}
 		</style>
 	</head>
 	<body>
 		<header>
-			<h1 class = "title">happy</h1>
-			<img src="http://images.hellogiggles.com/uploads/2015/02/20/picture-of-pusheen-cat-unicorn-photo.gif" width="150px">
+			<h1>Prompt Boss</h1>
+			<!-- <img src="http://images.hellogiggles.com/uploads/2015/02/20/picture-of-pusheen-cat-unicorn-photo.gif" width="150px"> -->
+			<!-- <img src="http://hdimagesnew.com/wp-content/uploads/2015/11/8747_1024x768.jpg"> -->
+			<img src="golden.jpg">
 			<ul>
 				<li>
-					<a href="#">Home</a>
+					<button onclick="maleName()">Male Names</button>
+					<p id="male"></p>
 				</li>
 				<li>
-					<a href="#">About</a>
+					<button onclick="femaleName()">Female Names</button>
+					<p id="female"></p>
 				</li>
 				<li>
-					<a href="#">Pusheen</a>
+					<button onclick="uniName()">Unisex Names</button>
+					<p id="uni"></p>
+				</li>
+				<li>
+					<button onclick="lastName()">Last Names</button>
+					<p id="last"></p>
+				</li>
+				<li>
+					<button onclick="prompts()">Prompts</button>
+					<p id="prompts"></p>
 				</li>
 			</ul>
 <!-- 			<button type="button">Click Me!</button> -->
+			<!-- <h2>Title</h2>
+			<p>Text right here</p> -->
 		</header>
-		<article>
-			<input type="text" placeholder="college name"/>
-			<button>Submit</button>
-		</article>
-		<div id="article-container">
-
-		</div>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-		<script>
-			$("button").on("click", function(){
-				var collegeName = $("input").val();
-				$.get("http://api.umd.io/v0/courses?dept_id=CMSC"+ collegeName, function(data){
-					$("#article-container").empty();
-					for(var i =0; i < data.length; i++){
-						var currentCourse = data[i];
-						$("#article-container").append("<article><h3>"+currentCourse.course_id+"</h3><p>"+currentCourse.description+"</p></article>")
-					}
-				})
-
-				// $("#article-container").append("<article><h2>Title</h2><p>Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen</p></article>");
-			})
-			// var x = 0;
-			// function greet(name, age){
-			// 	console.log("Hello " + name + age);
-			// }
-			// var name = "Sashank";
-			// var age = 18;
-			// greet(name, age);
-			// function multiplyAndDoSomething(number, action){
-			// 	number = number*5;
-			// 	action(number);
-			// }
-			// function printIt(input) {
-			// 	console.log(input)
-			// }
-			// function alertIt(input){
-			// 	alert("Hi " + input)
-			// }
-			// multiplyAndDoSomething(10, printIt);
-			// var name = prompt("What's your name?")
-			// alertIt(name)
-
-		</script>
 	</body>
+
 </html>
