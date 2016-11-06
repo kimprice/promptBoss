@@ -1,0 +1,123 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Lobster+Two|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs,cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+	<style>
+	header {
+		text-align: center; 
+		background: url("http://66.media.tumblr.com/41f6229d96f20770ef867787adee1c00/tumblr_ns2cvhbMKH1u1vo97o1_1280.png");
+		background-size: cover;
+		/*font-family: "Century Gothic";*/
+	}
+	h1 {
+		font-size: 70px;
+		font-family: "Lobster Two";
+
+	}
+	img {
+		margin: 40px 0 0 0;
+		/*border: 7px solid red;
+		border-radius: 20px;
+		background-color: brown;*/
+	}
+	a {
+		color: white;
+		text-decoration: none;
+		background-color: #4768a5;
+		padding: 5px;
+		border-radius: 5px;
+	}
+	ul {
+		padding: 10px;
+		font-family: "Open Sans";
+	}
+	li {
+		display: inline ; 
+		padding: 0px 10px 0px 10px;
+	}
+	.title {
+		margin: 0;
+	}
+	article {
+		width: 500px;
+		padding: 20px;
+		margin: 0 auto;
+		font-size: 50px;
+	}
+	@media (max-width: 500px) {
+		.title {
+			font-size: 36px;
+		}
+		li {
+			display: block;
+			padding: 7px 0 7px 0;
+		}
+		a {
+			padding: 5px 40% 5px 40%;
+		}
+	}
+	</style>
+</head>
+	<body>
+		<header>
+			<h1 class="title">What is Your Patronus?</h1>
+			<img src ="https://s-media-cache-ak0.pinimg.com/originals/72/df/fd/72dffd34ee78a1f563bbb43d13bed96f.png" width="300px">
+			<ul>
+				<li>
+					<a href="wizard.html">Letter</a>
+				</li>
+				<li>
+					<a href="sortingHat.html">Sorting Hat</a>
+				</li>
+				<li>
+					<a href="quidditch.html">Quidditch</a>
+				</li>
+			</ul>
+		</header>
+		<article>
+			<!-- <input style="width:175px;height:50px;font-size:36px" type="text" placeholder="name" id="name"/> -->
+			<button style="width:300px;height:50px;font-size:30px;text-align:center">Expecto Patronum!</button>
+		</article>
+		<div id="article-container" style ="font-size: 36px">
+			<article>
+				<!-- <h2>Title</h2> -->
+				<!-- <p>Lorem ipsum dolor sit amet consectetur adipisicinh elit.</p> -->
+			</article>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+		<script>
+		function randomPatronus(){
+			var array = ["otter","stag","doe","snake","rabbit","cat","tiger","falcon","dolphin","stallion","dog","phoenix","wolf","weasel","lynx","fox","swan","boar","goat","black bear","aardvark","badger","bat","black bird","owl","buffalo","monkey","cheetah","crow","dragon","dragonfly","eagle","elephant","field mouse","squirrel","heron","hippogriff","humingbird","hyena","cobra","leopard","lion","mink","mole","orangutan","orca","osprey","peacock","pheasant","polar bear","python","rat","rattlesnake","raven","rhinoceros","robin","salmon","seal","shark","sparrow","swallow","thestral","unicorn","vulture","wildcat"];
+			return array[Math.floor(Math.random()*array.length)];
+		}
+		//var name = document.getElementById("name")
+		//var name = $("input").val();
+		$("button").on("click", function() {
+			//alert("You're a wizard, Pusheen!");
+			var Patronus = randomPatronus();
+			$("#article-container").append("Your Patronus is a(n) " +Patronus + "!");
+		})
+		//comments
+		// function greet(name, age) {
+		// 	console.log("Hello " + name + age);
+		// }
+		// var name = "Sashank";
+		// var age = 18;
+		// greet(name, age);
+		// function multiplyAndDoSomething(number, action) {
+		// var newNumber = number * 5;
+		// action(newNumber);
+		// }
+		// var name = "Sashank";
+		// var printIt = function(input) {
+		// 	console.log(input);
+		// }
+		// var alertIt = function(input) {
+		// alert(input);
+		// }
+		// multiplyAndDoSomething(10, function(input) {
+		// 	console.log(input);
+		// });
+		</script>
+	</body>
+</html>

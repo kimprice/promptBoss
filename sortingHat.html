@@ -1,0 +1,123 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Lobster+Two|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs,cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+	<style>
+	header {
+		text-align: center; 
+		background: url("http://wallpapercave.com/wp/HfURRwV.jpg");
+		background-size: cover;
+		/*font-family: "Century Gothic";*/
+	}
+	h1 {
+		font-size: 70px;
+		font-family: "Lobster Two";
+
+	}
+	img {
+		margin: 40px 0 0 0;
+		/*border: 7px solid red;
+		border-radius: 20px;
+		background-color: brown;*/
+	}
+	a {
+		color: white;
+		text-decoration: none;
+		background-color: #4768a5;
+		padding: 5px;
+		border-radius: 5px;
+	}
+	ul {
+		padding: 10px;
+		font-family: "Open Sans";
+	}
+	li {
+		display: inline ; 
+		padding: 0px 10px 0px 10px;
+	}
+	.title {
+		margin: 0;
+	}
+	article {
+		width: 500px;
+		padding: 20px;
+		margin: 0 auto;
+		font-size: 50px;
+	}
+	@media (max-width: 500px) {
+		.title {
+			font-size: 36px;
+		}
+		li {
+			display: block;
+			padding: 7px 0 7px 0;
+		}
+		a {
+			padding: 5px 40% 5px 40%;
+		}
+	}
+	</style>
+</head>
+	<body>
+		<header>
+			<h1 class="title">Which House Do You Belong In?</h1>
+			<img src ="http://orig06.deviantart.net/7d49/f/2013/077/a/b/the_sorting_hat_gif_by_anastasiamantihora-d5yg6mv.gif" width="300px">
+			<ul>
+				<li>
+					<a href="wizard.html">Letter</a>
+				</li>
+				<li>
+					<a href="patronus.html">Patronus</a>
+				</li>
+				<li>
+					<a href="quidditch.html">Quidditch</a>
+				</li>
+			</ul>
+		</header>
+		<article>
+			<!-- <input style="width:175px;height:50px;font-size:36px" type="text" placeholder="name" id="name"/> -->
+			<button style="width:300px;height:50px;font-size:30px;text-align:center">Be Sorted!</button>
+		</article>
+		<div id="article-container" style ="font-size: 36px">
+			<article>
+				<!-- <h2>Title</h2> -->
+				<!-- <p>Lorem ipsum dolor sit amet consectetur adipisicinh elit.</p> -->
+			</article>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+		<script>
+		function randomHouse(){
+			var array = ["Gryffindor","Ravenclaw","Hufflepuff","Slytherin"];
+			return array[Math.floor(Math.random()*array.length)];
+		}
+		//var name = document.getElementById("name")
+		//var name = $("input").val();
+		$("button").on("click", function() {
+			//alert("You're a wizard, Pusheen!");
+			var house = randomHouse();
+			$("#article-container").append(house + "!");
+		})
+		//comments
+		// function greet(name, age) {
+		// 	console.log("Hello " + name + age);
+		// }
+		// var name = "Sashank";
+		// var age = 18;
+		// greet(name, age);
+		// function multiplyAndDoSomething(number, action) {
+		// var newNumber = number * 5;
+		// action(newNumber);
+		// }
+		// var name = "Sashank";
+		// var printIt = function(input) {
+		// 	console.log(input);
+		// }
+		// var alertIt = function(input) {
+		// alert(input);
+		// }
+		// multiplyAndDoSomething(10, function(input) {
+		// 	console.log(input);
+		// });
+		</script>
+	</body>
+</html>
