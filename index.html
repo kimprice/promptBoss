@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+		<style>
+		header {
+			/*background-color: purple;*/
+			text-align: center;
+			background: url("http://67.media.tumblr.com/6c7c8e8f0d4c1d269b3f6b7dde075076/tumblr_o8zbqmYN751qhy6c9o1_1280.gif");
+			/*background-image: "beachWed.jpg"*/
+			background-size: contain;
+			color: gray ;
+		}
+		h1 {
+			font-size: 70px;
+		}
+		img {
+			margin: 40px 0 0 0;
+			border: 7px solid pink;
+			border-radius: 20px;
+			background-color: brown;
+		}
+		a {
+			color: white;
+			text-decoration: none;
+			background-color: gray;
+			padding: 5px;
+			border-radius: 5px;
+		}
+		ul {
+			padding: 2px;
+		}
+		li {
+			display: inline;
+			/* */
+			padding: 0px 10px 0px 10px;
+		}
+		/*top right bottom left*/
+		/* when only two its top/bottom left/right*/
+		.title{
+			margin: 0;
+		}
+		article {
+			max-width: 500px;
+			padding: 20px;
+			margin: 0 auto;
+		}
+		@media (max-width: 500px) {
+			.title {
+				font-size: 36px;
+			}
+			li {
+				display: block;
+				padding: 7px 0 7px 0;
+			}
+			a {
+				padding: 5px 40% 5px 40%;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1 class = "title">happy</h1>
+			<img src="http://images.hellogiggles.com/uploads/2015/02/20/picture-of-pusheen-cat-unicorn-photo.gif" width="150px">
+			<ul>
+				<li>
+					<a href="#">Home</a>
+				</li>
+				<li>
+					<a href="#">About</a>
+				</li>
+				<li>
+					<a href="#">Pusheen</a>
+				</li>
+			</ul>
+<!-- 			<button type="button">Click Me!</button> -->
+		</header>
+		<article>
+			<input type="text" placeholder="college name"/>
+			<button>Submit</button>
+		</article>
+		<div id="article-container">
+
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+		<script>
+			$("button").on("click", function(){
+				var collegeName = $("input").val();
+				$.get("http://api.umd.io/v0/courses?dept_id=CMSC"+ collegeName, function(data){
+					$("#article-container").empty();
+					for(var i =0; i < data.length; i++){
+						var currentCourse = data[i];
+						$("#article-container").append("<article><h3>"+currentCourse.course_id+"</h3><p>"+currentCourse.description+"</p></article>")
+					}
+				})
+
+				// $("#article-container").append("<article><h2>Title</h2><p>Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen Pusheen</p></article>");
+			})
+			// var x = 0;
+			// function greet(name, age){
+			// 	console.log("Hello " + name + age);
+			// }
+			// var name = "Sashank";
+			// var age = 18;
+			// greet(name, age);
+			// function multiplyAndDoSomething(number, action){
+			// 	number = number*5;
+			// 	action(number);
+			// }
+			// function printIt(input) {
+			// 	console.log(input)
+			// }
+			// function alertIt(input){
+			// 	alert("Hi " + input)
+			// }
+			// multiplyAndDoSomething(10, printIt);
+			// var name = prompt("What's your name?")
+			// alertIt(name)
+
+		</script>
+	</body>
+</html>
