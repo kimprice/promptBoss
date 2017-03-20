@@ -1,0 +1,167 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script>
+			/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+			function menu() {
+    			var x = document.getElementById("myTopnav");
+    			if (x.className === "topnav") {
+        			x.className += " responsive";
+    			} else {
+        			x.className = "topnav";
+    			}
+			}
+
+			//makes calendar 301J to display onload
+			
+			function openCalendar(evt, calendarName) {
+    			var i, tabcontent, tablinks;
+    			tabcontent = document.getElementsByClassName("tabcontent");
+    			for (i = 0; i < tabcontent.length; i++) {
+        			tabcontent[i].style.display = "none";
+				}
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+				document.getElementById(calendarName).style.display = "block";
+				evt.currentTarget.className += " active";
+			}
+			function inputFocus(i){
+    			if(i.value==i.defaultValue){ i.value=""; i.style.color="#000"; }
+			}
+			function inputBlur(i){
+    			if(i.value==""){ i.value=i.defaultValue; i.style.color="#AAA"; }
+			}
+			function emailReservation(i){
+				var firstName = document.getElementById("firstname").value;
+				var lastName = document.getElementById("lastname").value;
+				var ufid = document.getElementById("ufid").value;
+				var userEmail = document.getElementById("email").value;
+				var roomNumber = document.getElementById("room").value;
+				var eventDate = document.getElementById("date").value;
+				var startTime = document.getElementById("starttime").value;
+				var endTime = document.getElementById("endtime").value;
+				var eventPurpose = document.getElementById("purpose").value;
+				
+				var emailMessage = "Email this text to calendar@cise.uf.edu:\nTo whom it may concern:\n\n I would like to reserve room ".concat(roomNumber," on ",eventDate," from ",startTime," to ",endTime,". The purpose of this meeting is ",eventPurpose,"\n\nRegards,\n",firstName," ",lastName,"\nUFID: ",ufid); 
+				console.log(emailMessage);
+				$.post("send-email.php", {
+					email: userEmail,
+					message: emailMessage
+				});
+			}
+			function availableToday() {
+				document.getElementById("301J").style.display = "block";
+				var roomE301J = "TBD";
+				var roomE344 = "N/A";
+				var roomE404 = "TBD";
+				var roomE440 = "TBD";
+				document.getElementById("E301J").innerHTML = document.getElementById("E301J").innerHTML.concat(" ", roomE301J);
+				document.getElementById("E344").innerHTML = document.getElementById("E344").innerHTML.concat(" ", roomE344);
+				document.getElementById("E404").innerHTML = document.getElementById("E404").innerHTML.concat(" ", roomE404);
+				document.getElementById("E440").innerHTML = document.getElementById("E440").innerHTML.concat(" ", roomE440);
+			}
+		</script>
+		<link rel="stylesheet" type="text/css" href="bookit.css">
+	</head>
+	<body onLoad="availableToday();">
+<div id="wrap">
+	
+	    <div id = "nav">
+			<ul class="topnav" id="myTopnav">
+				<li class="logo">BookIt!</li>
+			 	 <li><a href="#home">Home</a></li>
+				 <li><a href="#news">News</a></li>
+				 <li><a href="#contact">Contact</a></li>
+				 <li><a href="#about">About</a></li>
+				 <li class="icon">
+			    <a href="javascript:void(0);" onclick="menu()">&#9776;</a>
+			  </li>
+			</ul>
+		</div>
+    <div id="left_col">
+    	<br>
+        <br>
+        <br>
+        <div id="section_top">
+	        <h3>Today's Available Slots</h3>  <!-- will gather information from reservations -->
+	        <h4 id="E301J">E301J:</h4>
+	        <h4 id="E344">E344:</h4>
+	        <h4 id="E404">E404:</h4>
+	        <h4 id="E440">E440:</h4>
+	    </div>
+	    <div id="section_form">
+	    <form>
+  			First name: 
+  			<input type="text" name="firstname" id="firstname" title="First Name" align="right" style="color:#AAA;" value="First Name" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<br>
+  			Last name: 
+  			<input type="text" name="lastname" id="lastname" title="Last Name" style="color:#AAA;" value="Last Name" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<br>
+  			UFID: 
+  			<input type="text" name="ufid" id="ufid" title="UFID" style="color:#AAA;" value="####-####" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<br>
+  			UF email: 
+  			<input type="text" name="email" id="email" title="UF email" style="color:#AAA;" value="someone@ufl.edu" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<br><br>
+  			Room: 
+  			<select id="room">
+  				<option></option>
+				<option value="E301J">E301J</option>
+  				<option value="E344">E344</option>
+  				<option value="E404">E404</option>
+  				<option value="E440">E440</option>
+			</select>
+			<br>
+  			Date: 
+  			<input type="text" name="date" id="date" title="Date" style="color:#AAA;" value="MM/DD/YYYY" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<br>
+  			Start time: 
+  			<input type="text" name="starttime" id="starttime" title="Start Time" style="color:#AAA;" value="HH:mm AM/PM" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<br>
+  			End time: 
+  			<input type="text" name="endtime" id="endtime" title="End Time" style="color:#AAA;" value="HH:mm AM/PM" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<br>
+  			Purpose of reservation:<br>
+  			<textarea cols=40 rows=5 name="purpose" id="purpose" title="Purpose of Reservation" style="color:#AAA;" onfocus="inputFocus(this)" onblur="inputBlur(this)">Describe the purpose for this reservation....</textarea>
+  			<br>
+		</form> 
+	    </div>
+        <div id="section_bottom">
+        	<input type="button" value="Create Reservation" onclick="emailReservation(this)" />
+        </div>
+    </div>
+    <div id="right_col">
+    <br>
+	<div class="tab">
+	<!-- active designation makes tab for 404 look chosen -->
+	  <a href="javascript:void(0)" class="tablinks active" onclick="openCalendar(event, '301J')">E301J</a>
+	<!-- added another calendar -->
+		<a href="javascript:void(0)" class="tablinks" onclick="openCalendar(event, '344')">E344</a>
+	  <a href="javascript:void(0)" class="tablinks" onclick="openCalendar(event, '404')">E404</a>
+	  <a href="javascript:void(0)" class="tablinks" onclick="openCalendar(event, '440')">E440</a>
+	</div>
+
+	<div id="404" class="tabcontent">
+<!-- 	    <iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=gbkt347je58v19pdsntbhoegcc%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=America%2FNew_York" width=90% height=75% frameborder="0" scrolling="no";><p>iframes are not supported by your browser</p></iframe> -->
+		<iframe src="https://www.google.com/calendar/embed?mode=WEEK&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=5fef79ikkrdftvru1old76tbpk%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=America/New_York" width=90% height=75% frameborder="0" scrolling="no"></iframe>
+	</div> 
+
+	<div id="440" class="tabcontent">
+	 <!--  <iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=nh2fjs94i1t81ogvpemgnmmfmc%40group.calendar.google.com&amp;color=%232F6309&amp;ctz=America%2FNew_York" width=90% height=75% frameborder="0" scrolling="no"></iframe> -->
+	 <iframe src="https://www.google.com/calendar/embed?mode=WEEK&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=93nlu89irpu5bv1p8s7r2jhi1g%40group.calendar.google.com&amp;color=%232F6309&amp;ctz=America/New_York" width=90% height=75% frameborder="0" scrolling="no"></iframe>
+	</div>
+
+	<div id="301J" class="tabcontent">
+	  <!-- <iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ojuj3huv7r5n1vrq6k4k5g16hc%40group.calendar.google.com&amp;color=%2323164E&amp;ctz=America%2FNew_York" width=90% height=75% frameborder="0" scrolling="no"></iframe> -->
+	  <iframe src="https://www.google.com/calendar/embed?mode=WEEK&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=84osuuslcl6f7pug74ff42rias%40group.calendar.google.com&amp;color=%2323164E&amp;ctz=America/New_York" width=90% height=75% frameborder="0" scrolling="no"></iframe> 
+	</div>
+	<div id="344" class="tabcontent">
+	  <iframe src="https://www.google.com/calendar/embed?mode=WEEK&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=jt0dkinqffm5cmp4k49vgu7dek%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America/New_York" width=90% height=75% frameborder="0" scrolling="no"></iframe>
+	</div>
+    </div>
+</div>
+</body>
+
+</html>
