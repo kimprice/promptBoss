@@ -92,7 +92,7 @@
 	        <h4 id="E440">E440:</h4>
 	    </div>
 	    <div id="section_form">
-	    <form action="send-email.php" method="post">
+	    <form>
   			First name: 
   			<input type="text" name="firstname" id="firstname" title="First Name" align="right" style="color:#AAA;" value="First Name" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
   			<br>
@@ -128,7 +128,7 @@
   			<br>
 		</form> 
 		
-		<input type="button" value="Create Reservation" /> <!--onclick="emailReservation(this)"--/>
+		<input type="button" value="Create Reservation" onclick="emailReservation(this)" />
 	    </div>
     </div>
     <div id="right_col">
