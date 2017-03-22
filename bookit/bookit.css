@@ -24,7 +24,6 @@ h3 {
 	color: var(--secondary-font-color);
 	font-family:Georgia, serif;
 	text-align: left;
-	text-decoration: underline;
 }
 
 h4 {
@@ -64,26 +63,20 @@ iframe{
 }
 
 #right_col {
-   float:right;
+   float:left;
    width:50%;
 }
 
 #section_top{
    float:top;
    height:40%;
-   margin:0 25% 0 25%;
+   margin:0 350px 0 50px;
 }
 
 #section_form{
    float:top;
    height:40%;
-   margin:0 25% 0 25%;
-}
-#section_bottom{
-   float:bottom;
-   height:40%;
-   margin:0 25% 0 25%;
-
+   margin:0 350px 0 50px;
 }
 
 div.tab {
@@ -133,8 +126,10 @@ ul.topnav {
 }
 
 /* Float the list items side by side */
-ul.topnav li {
+ul.topnav li:not(.logo) {
 	float: right;
+	border-left: 2px solid;
+	border-color:var(--hover-tab-color);
 }
 
 ul.topnav li.logo {
@@ -156,6 +151,11 @@ ul.topnav li a {
 	text-decoration: none;
 	transition: 0.3s;
 	font-size: 17px;
+}
+
+select, input {
+	width: 130px; 
+    float: right;
 }
 
 /* Change background color of links on hover */
