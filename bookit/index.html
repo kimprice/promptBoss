@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<!--script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script-->
 		<script>
 			/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 			function menu() {
@@ -92,7 +92,7 @@
 	        <h4 id="E440">E440:</h4>
 	    </div>
 	    <div id="section_form">
-	    <form>
+	    <form action="send-email.php" method="POST">
   			First name: 
   			<input type="text" name="firstname" id="firstname" title="First Name" align="right" style="color:#AAA;" value="First Name" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
   			<br>
@@ -126,9 +126,10 @@
   			Purpose of reservation:<br>
   			<textarea cols=40 rows=5 name="purpose" id="purpose" title="Purpose of Reservation" style="color:#AAA;" onfocus="inputFocus(this)" onblur="inputBlur(this)">Describe the purpose for this reservation....</textarea>
   			<br>
+  			<input type="submit" value="Submit">
 		</form> 
 		
-		<input type="button" value="Create Reservation" onclick="emailReservation(this)" />
+		<!--input type="button" value="Create Reservation" onclick="emailReservation(this)" /-->
 	    </div>
     </div>
     <div id="right_col">
