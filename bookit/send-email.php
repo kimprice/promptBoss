@@ -4,8 +4,8 @@ include("./ChromePHP.php");
 
 // $email and $message are the data that is being
 // posted to this page from our html contact form
-$email = $_POST["email"];
-$message = $_POST["purpose"];
+$email = filter_input(INPUT_POST, "email");
+$message = filter_input(INPUT_POST, "message");
 
 // When we unzipped PHPMailer, it unzipped to
 // public_html/PHPMailer_5.2.0
