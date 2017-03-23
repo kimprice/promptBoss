@@ -1,64 +1,74 @@
 <?php
+	
+	include("./ChromePHP.php");
+	require("./PHPMailer-master/PHPMailerAutoload.php");
+	
+	date_default_timezone_set('Etc/UTC');
+	
+	//Email message variables
+	$email = filter_input(INPUT_POST, "email");
+	$name = filter_input(INPUT_POST, "name");
+	$message = filter_input(INPUT_POST, "message");
+	$sendto = "fernando@learndialogue.org";
+	$subject = "Room Reservation Request";
+	$sendfrom = "bookit.hciproject@gmail.com";
+	$fromname = "BookIt!";
+	$frompassword = "B00k1t-HCI";
+	
 
-include("./ChromePHP.php");
-
-// $email and $message are the data that is being
-// posted to this page from our html contact form
-$email = filter_input(INPUT_POST, "email");
-$message = filter_input(INPUT_POST, "message");
-
-// When we unzipped PHPMailer, it unzipped to
-// public_html/PHPMailer_5.2.0
-require("./PHPMailer-master/PHPMailerAutoload.php");
-
-$mail = new PHPMailer();
-
-// set mailer to use SMTP
-$mail->IsSMTP();
-
-// As this email.php script lives on the same server as our email server
-// we are setting the HOST to localhost
-//$mail->Host = "localhost"; // specify main and backup server
-
-$mail->SMTPAuth = true; // turn on SMTP authentication
-
-// When sending email using PHPMailer, you need to send from a valid email address
-// In this case, we setup a test email account with the following credentials:
-// email: send_from_PHPMailer@jeffm.webhostinghubexample.com
-// pass: password
-$mail->Username = "bookit.hciproject@gmail.com"; // SMTP username
-$mail->Password = "B00k1t-HCI"; // SMTP password
-
-// $email is the user's email address the specified
-// on our contact us page. We set this variable at
-// the top of this page with:
-// $email = $_REQUEST['email'] ;
-$mail->From = $email;
-
-// below we want to set the email address we will be sending our email to.
-$mail->AddAddress("fernando@learndialogue.org", "Fernando Rodriguez");
-
-// set word wrap to 50 characters
-//$mail->WordWrap = 50;
-// set email format to HTML
-$mail->IsHTML(true);
-
-$mail->Subject = "Room Reservation Request";
-
-// $message is the user's message they typed in
-// on our contact us page. We set this variable at
-// the top of this page with:
-// $message = $_REQUEST['message'] ;
-$mail->Body = $message;
-$mail->AltBody = $message;
-
-if(!$mail->Send())
-{
-ChromePHP::log("Message could not be sent. <p>");
-ChromePHP::log("Mailer Error: " . $mail->ErrorInfo);
-exit;
-}
-
-ChromePHP::log("Message has been sent");
-/**/
+	//Create a new PHPMailer instance
+	$mail = new PHPMailer;
+	
+	//Tell PHPMailer to use SMTP
+	$mail->isSMTP();
+	
+	//Enable SMTP debugging
+	// 0 = off (for production use)
+	// 1 = client messages
+	// 2 = client and server messages
+	$mail->SMTPDebug = 2;
+	//Ask for HTML-friendly debug output
+	$mail->Debugoutput = 'html';
+	
+	//Set the hostname of the mail server
+	$mail->Host = 'smtp.gmail.com';
+	// use
+	// $mail->Host = gethostbyname('smtp.gmail.com');
+	// if your network does not support SMTP over IPv6
+	//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+	$mail->Port = 587;
+	//Set the encryption system to use - ssl (deprecated) or tls
+	$mail->SMTPSecure = 'tls';
+	//Whether to use SMTP authentication
+	$mail->SMTPAuth = true;
+	
+	//Username to use for SMTP authentication - use full email address for gmail
+	$mail->Username = $sendfrom;
+	//Password to use for SMTP authentication
+	$mail->Password = $frompassword;
+	
+	//Set who the message is to be sent from
+	$mail->setFrom($sendfrom, $fromname);
+	//Set an alternative reply-to address
+	$mail->addReplyTo($email, $name);
+	//Set who the message is to be sent to
+	$mail->addAddress($sendto);
+	//Set the subject line
+	$mail->Subject = $subject;
+	//Read an HTML message body from an external file, convert referenced images to embedded,
+	//convert HTML into a basic plain-text alternative body
+	$mail->msgHTML($message);
+	//Replace the plain text body with one created manually
+	$mail->AltBody = $message;
+	
+	//Check if emal was sent successfully
+	if(!$mail->send()) {
+		ChromePHP::log("Message was not sent.");
+		ChromePHP::log("Mailer error: " . $mail->ErrorInfo);
+	} else {
+		ChromePHP::log("Message has been sent.");
+	}
+	
+	//Print mail object for debugging purposes
+	ChromePHP::log($mail);
 ?>

@@ -36,6 +36,7 @@
 			function emailReservation(i){
 				var firstName = document.getElementById("firstname").value;
 				var lastName = document.getElementById("lastname").value;
+				var fullName = firstName.concat(" ", lastName);
 				var ufid = document.getElementById("ufid").value;
 				var userEmail = document.getElementById("email").value;
 				var roomNumber = document.getElementById("room").value;
@@ -43,11 +44,11 @@
 				var startTime = document.getElementById("starttime").value;
 				var endTime = document.getElementById("endtime").value;
 				var eventPurpose = document.getElementById("purpose").value;
-				
-				var emailMessage = "Email this text to calendar@cise.uf.edu:\nTo whom it may concern:\n\n I would like to reserve room ".concat(roomNumber," on ",eventDate," from ",startTime," to ",endTime,". The purpose of this meeting is ",eventPurpose,"\n\nRegards,\n",firstName," ",lastName,"\nUFID: ",ufid); 
+				var emailMessage = "To whom it may concern:\n\nI would like to reserve room ".concat(roomNumber," on ",eventDate," from ",startTime," to ",endTime,". The purpose of this meeting is ",eventPurpose,"\n\nRegards,\n",firstName," ",lastName,"\nUFID: ",ufid); 
 				console.log(emailMessage);
 				$.post("send-email.php", {
 					email: userEmail,
+					name: fullName,
 					message: emailMessage
 				});
 			}
