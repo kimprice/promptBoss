@@ -33,24 +33,73 @@
 			function inputBlur(i){
     			if(i.value==""){ i.value=i.defaultValue; i.style.color="#AAA"; }
 			}
+			function demilitarize(time) {
+				var hour = parseInt(time.substring(0,2));
+				var period = "AM";
+				if (hour == 0) {
+					hour = 12;
+				} else if (hour > 12) {
+					hour = hour - 12
+					period = "PM";
+				}
+				
+				var newTime = "".concat(hour, time.substring(2, 5), " ", period);
+				return newTime;
+					 
+				
+			}
 			function emailReservation(i){
 				var firstName = document.getElementById("firstname").value;
 				var lastName = document.getElementById("lastname").value;
 				var fullName = firstName.concat(" ", lastName);
 				var ufid = document.getElementById("ufid").value;
 				var userEmail = document.getElementById("email").value;
+				
+				if (!userEmail.endsWith("@ufl.edu")) {
+					alert("Email must be a UF email.");
+					return;
+				}
+				
 				var roomNumber = document.getElementById("room").value;
 				var eventDate = document.getElementById("date").value;
-				var startTime = document.getElementById("starttime").value;
-				var endTime = document.getElementById("endtime").value;
+				eventDate = eventDate.substring(5, 7).concat("/", eventDate.substring(8,10), "/", eventDate.substring(0,4));
+				var startTime = demilitarize(document.getElementById("starttime").value);
+				var endTime = demilitarize(document.getElementById("endtime").value);
 				var eventPurpose = document.getElementById("purpose").value;
-				var emailMessage = "To whom it may concern:\n\nI would like to reserve room ".concat(roomNumber," on ",eventDate," from ",startTime," to ",endTime,". The purpose of this meeting is ",eventPurpose,"\n\nRegards,\n",firstName," ",lastName,"\nUFID: ",ufid); 
-				console.log(emailMessage);
-				$.post("send-email.php", {
-					email: userEmail,
-					name: fullName,
-					message: emailMessage
-				});
+				var emailMessage = "This is an automated conference room reservation request:<br><br>Name: ".concat(fullName, "<br>Email: ", userEmail, "<br>UFID: ",ufid,"<br>Room: ",roomNumber,"<br>Date: ", eventDate, "<br>Time: ", startTime, " - ", endTime, "<br>Purpose: ", eventPurpose, "<br>");
+				var emailMessageRaw = "Name: ".concat(fullName, "\nEmail: ", userEmail, "\nUFID: ",ufid,"\nRoom: ",roomNumber,"\nDate: ", eventDate, "\nTime: ", startTime, " - ", endTime, "\nPurpose: ", eventPurpose, "\n");
+				
+				var confirmSend = confirm("The following information will be emailed for your room reservation request:\n\n".concat(emailMessageRaw));
+				
+				if (confirmSend) {
+					console.log(emailMessage);
+					$.post("send-email.php", {
+						email: userEmail,
+						name: fullName,
+						message: emailMessage
+					});
+					
+					alert("Your room reservation has been requested.");
+					
+					document.getElementById("firstname").value = "";
+					inputBlur(document.getElementById("firstname"));
+					document.getElementById("lastname").value = "";
+					inputBlur(document.getElementById("lastname"));
+					document.getElementById("ufid").value = "";
+					inputBlur(document.getElementById("ufid"));
+					document.getElementById("email").value = "";
+					inputBlur(document.getElementById("email"));
+					document.getElementById("room").value = "";
+					inputBlur(document.getElementById("room"));
+					document.getElementById("date").value = "";
+					inputBlur(document.getElementById("date"));
+					document.getElementById("starttime").value = "";
+					inputBlur(document.getElementById("starttime"));
+					document.getElementById("endtime").value = "";
+					inputBlur(document.getElementById("endtime"));
+					document.getElementById("purpose").value = "";
+					inputBlur(document.getElementById("purpose"));
+				}
 			}
 			function availableToday() {
 				document.getElementById("301J").style.display = "block";
@@ -64,18 +113,17 @@
 				document.getElementById("E440").innerHTML = document.getElementById("E440").innerHTML.concat(" ", roomE440);
 			}
 		</script>
-		<link rel="stylesheet" type="text/css" href="bookit.css">
+		<link rel="stylesheet" type="text/css" href="bookit-style.css">
 	</head>
 	<body onLoad="availableToday();">
 <div id="wrap">
 	
 	    <div id = "nav">
 			<ul class="topnav" id="myTopnav">
-				<li class="logo">BookIt!</li>
-			 	 <li><a href="#home">Home</a></li>
-				 <li><a href="#news">News</a></li>
-				 <li><a href="#contact">Contact</a></li>
-				 <li><a href="#about">About</a></li>
+				<li class="logo"><a class="logolink" href="index.html">BookIt!</a></li>
+			 	 <li><a href="index.html">Home</a></li>
+				 <li><a href="contact.html">Contact</a></li>
+				 <li><a href="about.html">About</a></li>
 				 <li class="icon">
 			    <a href="javascript:void(0);" onclick="menu()">&#9776;</a>
 			  </li>
@@ -83,8 +131,6 @@
 		</div>
     <div id="left_col">
     	<br>
-        <br>
-        <br>
         <div id="section_top">
 	        <h3>Today's Available Slots</h3>  <!-- will gather information from reservations -->
 	        <h4 id="E301J">E301J:</h4>
@@ -104,11 +150,11 @@
   			<input type="text" name="ufid" id="ufid" title="UFID" style="color:#AAA;" value="####-####" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
   			<br>
   			UF email: 
-  			<input type="text" name="email" id="email" title="UF email" style="color:#AAA;" value="someone@ufl.edu" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<input type="email" name="email" id="email" title="UF email" style="color:#AAA;" value="someone@ufl.edu" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
   			<br><br>
   			Room: 
   			<select id="room">
-  				<option></option>
+  				<option>--</option>
 				<option value="E301J">E301J</option>
   				<option value="E344">E344</option>
   				<option value="E404">E404</option>
@@ -116,20 +162,20 @@
 			</select>
 			<br>
   			Date: 
-  			<input type="text" name="date" id="date" title="Date" style="color:#AAA;" value="MM/DD/YYYY" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<input type="date" name="date" id="date" title="Date" style="color:#AAA;" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
   			<br>
   			Start time: 
-  			<input type="text" name="starttime" id="starttime" title="Start Time" style="color:#AAA;" value="HH:mm AM/PM" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<input type="time" name="starttime" id="starttime" title="Start Time" style="color:#AAA;" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
   			<br>
   			End time: 
-  			<input type="text" name="endtime" id="endtime" title="End Time" style="color:#AAA;" value="HH:mm AM/PM" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
-  			<br>
+  			<input type="time" name="endtime" id="endtime" title="End Time" style="color:#AAA;" onfocus="inputFocus(this)" onblur="inputBlur(this)" />
+  			<br><br>
   			Purpose of reservation:<br>
   			<textarea cols=40 rows=5 name="purpose" id="purpose" title="Purpose of Reservation" style="color:#AAA;" onfocus="inputFocus(this)" onblur="inputBlur(this)">Describe the purpose for this reservation....</textarea>
   			<br>
 		</form> 
 		
-		<input type="button" value="Create Reservation" onclick="emailReservation(this)" />
+		<input type="button" value="Book It!" onclick="emailReservation(this)" />
 	    </div>
     </div>
     <div id="right_col">

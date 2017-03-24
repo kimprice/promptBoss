@@ -10,7 +10,7 @@
 	$name = filter_input(INPUT_POST, "name");
 	$message = filter_input(INPUT_POST, "message");
 	$sendto = "fernando@learndialogue.org";
-	$subject = "Room Reservation Request";
+	$subject = "Room Reservation Request - ".$name;
 	$sendfrom = "bookit.hciproject@gmail.com";
 	$fromname = "BookIt!";
 	$frompassword = "B00k1t-HCI";
@@ -53,6 +53,7 @@
 	$mail->addReplyTo($email, $name);
 	//Set who the message is to be sent to
 	$mail->addAddress($sendto);
+	$mail->addAddress($email);
 	//Set the subject line
 	$mail->Subject = $subject;
 	//Read an HTML message body from an external file, convert referenced images to embedded,
